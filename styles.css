@@ -1,0 +1,63 @@
+body {
+  background-color: #6d6875;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 50px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffcdb2;
+}
+
+.title,
+.round-result {
+  font-size: 32px;
+}
+
+.container,
+.scoreboard {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-self: normal;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.choice img {
+  width: 150px;
+  height: 150px;
+}
+.choice button,
+#restart {
+  background-color: #b5838d;
+  color: aliceblue;
+  border: 2px solid #e5989b;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.choice button:disabled {
+  border: 2px solid hsl(347, 4%, 52%);
+  background-color: hsl(347, 4%, 52%);
+  color: darkgray;
+}
+.scoreboard .card {
+  text-align: center;
+}
+
+.scoreboard .card img {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
+.score {
+  font-size: 42px;
+  font-weight: bold;
+}

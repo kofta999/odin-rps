@@ -4,24 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock paper scissors</title>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="title">Rock Paper Scissors</div>
     <div class="container">
-      <button class="selection" value="rock">Rock</button>
-      <button class="selection" value="paper">Paper</button>
-      <button class="selection" value="scissors">Scissors</button>
+      <div class="choice">
+        <img src="./images/rock.png" alt="rock">
+        <button class="selection" value="rock">Rock</button>
+      </div>
+      <div class="choice">
+        <img src="./images/paper.png" alt="paper">
+        <button class="selection" value="paper">Paper</button>
+      </div>
+      <div class="choice">
+        <img src="./images/scissors.png" alt="scissors">
+
+        <button class="selection" value="scissors">Scissors</button>
+      </div>
     </div>
-    <div class="results">
+    <div class="scoreboard">
       <div class="card" id="player">
-        <img src="" alt="">
-        <div id="player-score">0</div>
+        <img src="./images/player.png" alt="player" />
+        <div class="score" id="player-score">0</div>
       </div>
       <div class="card" id="computer">
-        <img src="" alt="">
-        <div id="computer-score">0</div>
+        <img src="./images/computer.png" alt="computer" />
+        <div class="score" id="computer-score">0</div>
       </div>
-      <div class="round-result"></div>
     </div>
+    <div class="round-result"></div>
     <button id="restart">Restart game</button>
     <script src="./script.js"></script>
   </body>
