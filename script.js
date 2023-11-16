@@ -1,22 +1,37 @@
 const buttons = document.querySelectorAll(".selection");
 const roundResult = document.querySelector(".round-result");
+const playerScore = document.querySelector("#player-score");
+const computerScore = document.querySelector("#computer-score");
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const selection = e.target.value;
     const result = playRound(selection, getComputerChoice());
     addResult(result);
+    checkResult();
   });
 });
 
 function addResult(result) {
   roundResult.textContent = result.message;
   if (result.points === 1) {
-    const playerScore = document.querySelector("#player-score");
     playerScore.textContent = parseInt(playerScore.textContent) + 1;
   } else if (result.points === -1) {
-    const computerScore = document.querySelector("#computer-score");
     computerScore.textContent = parseInt(computerScore.textContent) + 1;
+  }
+}
+
+function checkResult() {
+  if (playerScore.textContent === "5") {
+    roundResult.textContent = "Player Won!";
+    buttons.forEach((button) => {
+      button.disabled = true;
+    });
+  } else if (computerScore.textContent === "5") {
+    roundResult.textContent = "Player Lost!";
+    buttons.forEach((button) => {
+      button.disabled = true;
+    });
   }
 }
 
@@ -59,28 +74,3 @@ function playRound(playerSelection, computerSelection) {
 
   return result;
 }
-
-// function game() {
-//   let userInput, result;
-//   let [win, lose] = [0, 0];
-
-//   for (let i = 0; i < 5; i++) {
-//     userInput = prompt("Enter Rock, Paper or Scissors!");
-//     result = playRound(userInput, getComputerChoice());
-//     alert(result[0]);
-//     if (result[1] === 99) {
-//       i--;
-//       continue;
-//     }
-//     if (result[1] === 1) {
-//       win++;
-//     }
-//     if (result[1] === -1) {
-//       lose++;
-//     }
-//   }
-
-//   if (win > lose) alert("You win!");
-//   else if (lose > win) alert("You lose!");
-//   else alert("Deuce!");
-// }
