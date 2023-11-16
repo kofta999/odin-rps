@@ -1,12 +1,11 @@
-const buttons = document.querySelectorAll(".selection")
+const buttons = document.querySelectorAll(".selection");
 
 buttons.forEach((button) => {
-  button.addEventListener('click', (e) => {
+  button.addEventListener("click", (e) => {
     const selection = e.target.value;
-    playRound(selection, getComputerChoice())
+    playRound(selection, getComputerChoice());
   });
-})
-
+});
 
 function getComputerChoice() {
   const items = ["rock", "paper", "scissors"];
@@ -17,44 +16,37 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
-  let result;
+  let result = {
+    message: "",
+    points: 0,
+  };
 
-  if (playerSelection === "rock") {
-    switch (computerSelection) {
-      case "rock":
-        result = ["Deuce!", 0];
-        break;
-      case "paper":
-        result = ["You lose! Paper beats Rock", -1];
-        break;
-      case "scissors":
-        result = ["You win! Rock beats Scissors", 1];
-    }
-  } else if (playerSelection === "paper") {
-    switch (computerSelection) {
-      case "rock":
-        result = ["You win! Paper beats rock", 1];
-        break;
-      case "paper":
-        result = ["Deuce!", 0];
-        break;
-      case "scissors":
-        result = ["You lose! Scissors beats paper", -1];
-    }
-  } else if (playerSelection === "scissors") {
-    switch (computerSelection) {
-      case "rock":
-        result = ["You lose! Rock beats Scissors", -1];
-        break;
-      case "paper":
-        result = ["You win! Scissors beats paper", 1];
-        break;
-      case "scissors":
-        result = ["Deuce!", 0];
-    }
+  if (
+    (playerSelection === "rock" && computerSelection === "rock") ||
+    (playerSelection === "paper" && computerSelection === "paper") ||
+    (playerSelection === "scissors" && computerSelection === "scissors")
+  ) {
+    result.message = "It's a Tie!";
+    result.points = 0;
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    result.message = `You Win!, ${playerSelection} beats ${computerSelection}`;
+    result.points = 1;
+  } else if (
+    (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "rock")
+  ) {
+    result.message = `You Lose!, ${computerSelection} beats ${playerSelection}`;
+    result.points = -1;
   } else {
-    result = ["Invalid Input", 99];
+    result.message = "Invalid Input";
+    result.points = null;
   }
+  
   console.log(result);
   return result;
 }
