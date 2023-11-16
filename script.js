@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll(".selection");
 const roundResult = document.querySelector(".round-result");
 const playerScore = document.querySelector("#player-score");
 const computerScore = document.querySelector("#computer-score");
+const restartButton = document.querySelector("#restart");
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -11,6 +12,8 @@ buttons.forEach((button) => {
     checkResult();
   });
 });
+
+restartButton.addEventListener("click", clearResults);
 
 function addResult(result) {
   roundResult.textContent = result.message;
@@ -33,6 +36,15 @@ function checkResult() {
       button.disabled = true;
     });
   }
+}
+
+function clearResults() {
+  playerScore.textContent = "0";
+  computerScore.textContent = "0";
+  roundResult.textContent = "";
+  buttons.forEach((button) => {
+    button.disabled = false;
+  });
 }
 
 function getComputerChoice() {
