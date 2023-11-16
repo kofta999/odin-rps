@@ -45,7 +45,6 @@ function playRound(playerSelection, computerSelection) {
   } else {
     result = ["Invalid Input", 99];
   }
-  alert(result);
   return result;
 }
 
@@ -63,7 +62,6 @@ function game() {
     }
     if (result[1] === 1) {
       win++;
-      alert(result[0]);
     }
     if (result[1] === -1) {
       lose++;
