@@ -1,11 +1,24 @@
 const buttons = document.querySelectorAll(".selection");
+const roundResult = document.querySelector(".round-result");
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const selection = e.target.value;
-    playRound(selection, getComputerChoice());
+    const result = playRound(selection, getComputerChoice());
+    addResult(result);
   });
 });
+
+function addResult(result) {
+  roundResult.textContent = result.message;
+  if (result.points === 1) {
+    const playerScore = document.querySelector("#player-score");
+    playerScore.textContent = parseInt(playerScore.textContent) + 1;
+  } else if (result.points === -1) {
+    const computerScore = document.querySelector("#computer-score");
+    computerScore.textContent = parseInt(computerScore.textContent) + 1;
+  }
+}
 
 function getComputerChoice() {
   const items = ["rock", "paper", "scissors"];
@@ -14,9 +27,9 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerSelection.toLowerCase();
-  let result = {
+  playerSelection = playerSelection;
+  computerSelection = computerSelection;
+  const result = {
     message: "",
     points: 0,
   };
@@ -42,12 +55,8 @@ function playRound(playerSelection, computerSelection) {
   ) {
     result.message = `You Lose!, ${computerSelection} beats ${playerSelection}`;
     result.points = -1;
-  } else {
-    result.message = "Invalid Input";
-    result.points = null;
   }
-  
-  console.log(result);
+
   return result;
 }
 
