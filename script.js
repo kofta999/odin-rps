@@ -1,3 +1,13 @@
+const buttons = document.querySelectorAll(".selection")
+
+buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    const selection = e.target.value;
+    playRound(selection, getComputerChoice())
+  });
+})
+
+
 function getComputerChoice() {
   const items = ["rock", "paper", "scissors"];
   const index = Math.floor(Math.random() * 3);
@@ -45,30 +55,31 @@ function playRound(playerSelection, computerSelection) {
   } else {
     result = ["Invalid Input", 99];
   }
+  console.log(result);
   return result;
 }
 
-function game() {
-  let userInput, result;
-  let [win, lose] = [0, 0];
+// function game() {
+//   let userInput, result;
+//   let [win, lose] = [0, 0];
 
-  for (let i = 0; i < 5; i++) {
-    userInput = prompt("Enter Rock, Paper or Scissors!");
-    result = playRound(userInput, getComputerChoice());
-    alert(result[0]);
-    if (result[1] === 99) {
-      i--;
-      continue;
-    }
-    if (result[1] === 1) {
-      win++;
-    }
-    if (result[1] === -1) {
-      lose++;
-    }
-  }
+//   for (let i = 0; i < 5; i++) {
+//     userInput = prompt("Enter Rock, Paper or Scissors!");
+//     result = playRound(userInput, getComputerChoice());
+//     alert(result[0]);
+//     if (result[1] === 99) {
+//       i--;
+//       continue;
+//     }
+//     if (result[1] === 1) {
+//       win++;
+//     }
+//     if (result[1] === -1) {
+//       lose++;
+//     }
+//   }
 
-  if (win > lose) alert("You win!");
-  else if (lose > win) alert("You lose!");
-  else alert("Deuce!");
-}
+//   if (win > lose) alert("You win!");
+//   else if (lose > win) alert("You lose!");
+//   else alert("Deuce!");
+// }
